@@ -7,11 +7,11 @@ using namespace std;
 int main(){
   const char* json = "{\"parent\" : {\"child\" : [1,2,3,4]}}";
   /*
-   * {
-   *   "parent" : {
-   *     "child" : [1,2,3,4]
-   *   }
-   */
+    {
+      "parent" : {
+      "child" : [1,2,3,4]
+    }
+  */
 
   Document document;
   document.Parse(json);

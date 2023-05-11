@@ -19,8 +19,6 @@ int main () {
    *}
   */
 
-  static const char* kTypeNames[] = { "Null", "False", "True", "Object", "Array", "String", "Number" };
-
   Document document;
   document.Parse(json);
    
