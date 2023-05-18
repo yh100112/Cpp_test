@@ -10,6 +10,6 @@ int main(){
 
 
   int *b = a;
-  cout << *b << endl;
-
+  cout << *b << endl; // 1
+  cout << *(b + 1) << endl; // 2
 }
