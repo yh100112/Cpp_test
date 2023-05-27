@@ -1,8 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 using namespace std;
-
-//구조체를 이용한 객체 생성방법
 struct Point2D{
   int x;
   int y;

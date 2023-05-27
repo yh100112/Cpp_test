@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 struct test
 {
   int x;

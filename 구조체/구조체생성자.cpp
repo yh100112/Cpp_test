@@ -5,7 +5,12 @@ struct Student
   char *name;
   char *major;
   int stu_num;
-  Student(char *n, int sn, char *m) : name(n), stu_num(sn), major(m){};
+  Student(char *n, int sn, char *m)
+  : name(n), 
+  stu_num(sn), 
+  major(m)
+  {
+  };
 
   // 기본 생성자
   Student()
