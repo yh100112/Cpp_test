@@ -11,7 +11,7 @@ int main()
 
   if (color == Color::RED)
     std::cout << "The color is red\n";
-  else if (color = Color::BLUE)
+  else if (color == Color::BLUE)
     std::cout << "The color is blue\n";
 
   return 0;

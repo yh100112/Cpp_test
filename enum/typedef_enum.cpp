@@ -8,13 +8,12 @@ typedef enum _DayOfWeek { // 열거형 이름 : _DayOfWeek
   Tuesday
 } DayOfWeek;   //  typedef를 사용하여 열거형 별칭을 DayOfWeek로 정의
 
-
 // typedef로 열거형 별칭 지정하기2
 typedef enum { 
   aaa,
   bbb,
   ccc
-} DayOfWeek2;   
+} DayOfWeek2;
 
 
 // 열거형을 정의하는 동시에 열거형 변수 선언하기
