@@ -15,12 +15,11 @@ int main(){
     list2.push_back("Y");
     list2.push_back("Z");
 
-    list<string>::iterator iter;
-
-    iter = list2.begin();
-    list2.splice(iter,list1); 
-    // lt2에 iter가 가리키는 부분부터 lt1을 잘라서 같다 붙인다. 
+    list2.splice(list2.begin(),list1);
+    // list2에 list1을 갖다붙인다.
+    // ->  list2.begin()이 가리키는 부분에 lt1을 잘라서 같다 붙인다. 
     //! lt1은 값이 사라짐
 
+    list<string>::iterator iter;
     for(iter = list2.begin(); iter!= list2.end(); iter++) { cout <<*iter << " "; } // a b c X Y Z
 }
