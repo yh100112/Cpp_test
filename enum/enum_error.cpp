@@ -12,8 +12,8 @@ enum SYMBOLS : int16_t {
 // error : enum변수명은 숫자로 시작할 수 없음
 // 1st, 2nd 가 안 됨
 typedef enum {
-  1st,
-  2nd,
+  // 1st,
+  // 2nd,
   trd
 } test;
 
