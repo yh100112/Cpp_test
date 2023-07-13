@@ -4,21 +4,6 @@ using namespace std;
 
 int main()
 {
-  // vector<int> a;
-  // a.resize(5);
-  //
-  // for (auto& v : a)
-  //   cout << v << " "; // 0 0 0 0 0
-  // cout << endl;
-
-  // vector<int> a;
-  // a.resize(3);
-  // a[0] = 1;
-  // a[1] = 2;
-  //
-  // for (auto& v: a)
-  //   cout << v << endl;
-
   vector<vector<vector<int>>> test; // vector test를 선언만 한 상태 메모리에 실제 할당된 공간은 없음
 
   // resize를 사용해 test를 원하는 크기만큼 메모리 공간에 할당
@@ -28,7 +13,7 @@ int main()
   test.resize(3);
   for (auto& v : test) {
     v.resize(3);
-    // for (auto& vv: v)  // -> 1. 마지막 3차원 배열의 3차원 부분까지 resize를 하면 0으로 값이 들어가서 밑에서 emplace_back으로 값을 넣을 때 뒤로 들어감
+    // for (auto& vv: v)  // !1. 마지막 3차원 배열의 3차원 부분까지 resize를 하면 0으로 값이 들어가서 밑에서 emplace_back으로 값을 넣을 때 뒤로 들어감
     //   vv.resize(3);
   }
 
@@ -38,17 +23,8 @@ int main()
     for (j = 0; j < 3; ++j) {
       for (k = 0; k < 3; ++k) {
         test[i][j].emplace_back(k);
-        // test[i][j][k] = k;  // -> 위 "1." 주석을 해제하고 resize해주면 이렇게 넣어줄 수 있음 이미 0으로 값이 들어가 있는 상태이므로
+        // test[i][j][k] = k;  // ! "1."의 주석을 해제하고 resize해주면 이렇게 넣어줄 수 있음 이미 0으로 값이 들어가 있는 상태이므로
       }
-    }
-  }
-
-  for (auto& v: test){
-    for (auto& vv: v){
-      for (auto& vvv : vv){
-        cout << vvv << " ";
-      }
-      cout << endl;
     }
   }
 }
