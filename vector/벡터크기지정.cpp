@@ -21,5 +21,15 @@ int main()
   b[1] = 4;
 
   cout << b[2] << endl; // 0
+
+  // vector<vector<int>> c(3); 
+  vector<vector<int>> c; 
+  c.resize(3); // 위 c(3)과 같은 의미
+  for(auto v: c){
+    for(auto vv: v){
+      cout << vv << " ";
+    }
+    cout << "---" << endl;
+  }
 }
 
