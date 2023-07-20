@@ -25,9 +25,9 @@ int main(){
   thread t2(func2);
   thread t3(func3);
 
-  t1.join(); // t1이 종료되기 전까지 리턴하지 않음
-  t2.join(); // t2가 종료되기 전까지 리턴하지 않음
-  t3.join(); // t3가 종료되기 전까지 리턴하지 않음
+  t1.join(); // t1이 종료되기 전까지 main()이 리턴하지 않음
+  t2.join(); // t2가 종료되기 전까지 main()이 리턴하지 않음
+  t3.join(); // t3가 종료되기 전까지 main()이 리턴하지 않음
 }
 
 
