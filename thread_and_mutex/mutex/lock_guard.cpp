@@ -18,13 +18,11 @@ int main(){
   std::mutex m; // mutex객체 생성
 
   vector<thread> workers;
-  for(int i=0; i<4; i++){
+  for(int i=0; i<4; i++)
     workers.push_back(std::thread(worker, std::ref(counter), std::ref(m))); // thread에서 실행하는 함수에 매개변수가 참조일 때는  ref()로 전달 -> 그냥 전달하면 에러남
-  }
 
-  for(int i=0; i<4; i++){
+  for(int i=0; i<4; i++)
     workers[i].join(); // workers 쓰레드가 작업을 다 끝낼 때까지 main은 대기
-  }
 
   std::cout << "Counter 최종 값 : " << counter << std::endl;
 }
