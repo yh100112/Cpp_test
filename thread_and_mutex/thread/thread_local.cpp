@@ -17,9 +17,9 @@ int main(){
   thread th1(OnThread, 0);
   thread th2(OnThread, 1);
 
-  unique_lock<mutex> lock(g_mutex);
+  g_mutex.lock();
   cout << "main thread : " << i << endl;
-  lock.unlock();
+  g_mutex.unlock();
 
   th1.join();
   th2.join();
