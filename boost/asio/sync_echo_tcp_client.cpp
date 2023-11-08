@@ -30,13 +30,15 @@ int main() {
 
   // 서버에 메시지를 7번 보내고 연결 종료할 거임
   for (int i = 0; i < 7; i++) {
-    char szMessage[128] = {0, };
+    // char szMessage[128] = {0, };
+    string szMessage;
     
     cout << "입력 : ";
-    cin >> szMessage;
+    // cin >> szMessage;
+    getline(cin, szMessage);
     boost::system::error_code write_error;
     
-    clnt_sock.write_some(boost::asio::buffer(szMessage, 128 - 1), write_error); // server에 데이터 전송
+    clnt_sock.write_some(boost::asio::buffer(szMessage, szMessage.size()), write_error); // server에 데이터 전송
      
     cout << "서버에 보낸 메세지 : " << szMessage << endl;
     

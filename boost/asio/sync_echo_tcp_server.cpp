@@ -1,4 +1,5 @@
 #include<iostream>
+#include<stdio.h>
 #include<boost/asio.hpp>
 
 using namespace std;
@@ -10,10 +11,10 @@ int main() {
 
   boost::asio::ip::tcp::endpoint serv_addr(boost::asio::ip::tcp::v4(), PORT); 
   // 네트워크 주소를 설정한다. 이 주소로 클라이언트가 접속한다.
-  // 서버는 스스로 자신의 ip주소를 알고 있기 때문에 따로 클라이언트처럼 ip주소를 넣어주는 작업을 하지 않는다. -> ip 주소체계만 넣어준다. ( ip::tcp::v4() or ip::tcp::v6() )
+  // 서버는 스스로 자신의 ip주소를 알고 있기 때문에 따로 클라이언트처럼 ip주소를 넣어주는 작업을 하지 않는다. 
+  // -> ip 주소체계만 넣어준다. ( ip::tcp::v4() 또는 ip::tcp::v6() )
 
-
-  boost::asio::ip::tcp::acceptor acceptor(io_context, serv_addr); // 클라이언트 접속을 받아들이는 부분 -> serv_addr에 접속이 됐는지 알기 위해 erv_addr도 매개변수로 넘겨줌 
+  boost::asio::ip::tcp::acceptor acceptor(io_context, serv_addr); // 클라이언트 접속을 받아들이는 부분 -> serv_addr에 접속이 됐는지 알기 위해 serv_addr도 매개변수로 넘겨줌 
 
   boost::asio::ip::tcp::socket serv_sock(io_context); // 접속한 클라이언트에게 할당할 소켓을 만듬 -> 이 소켓을 통해 클라가 보낸 데이터를 주고받는다.
 
@@ -41,11 +42,10 @@ int main() {
     }
     
     cout << "클라이언트에서 받은 메세지 : " << buf << endl;
-    char szMessage[128] = { 0, };
-    sprintf_s(szMessage, 128 - 1, "Re:%s", &buf[0]);
+    char send_msg[128] = {0,};
+    sprintf(send_msg, "응답:%s", buf); // 서버에서 입력받아 클라에 보낼 문자
     
     boost::system::error_code ignored_error;
-    serv_sock.write_some(boost::asio::buffer(szMessage,128 - 1), ignored_error); // szMessage에 담긴 데이터를 127만큼만 클라에게 보낸다.
+    serv_sock.write_some(boost::asio::buffer(send_msg, 128 - 1), ignored_error); // send_msg에 담긴 데이터를 127만큼만 클라에게 보낸다.
   }
-
 }
