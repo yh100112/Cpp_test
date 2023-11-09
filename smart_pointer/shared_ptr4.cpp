@@ -6,19 +6,17 @@ using namespace std;
 
 class Monster
 {
-private:
-  string name_;
-  float hp_;
-  float damage_;
+  private:
+    string name_;
+    float hp_;
+    float damage_;
 
-public:
-  Monster(const string& name, float hp, float damage); // 생성자 선언
+  public:
+    Monster(const string& name, float hp, float damage); // 생성자 선언
 
-  ~Monster(){
-    cout << "메모리 해제" << endl;
-  }
+    ~Monster(){ cout << "메모리 해제" << endl; }
 
-  void PrintMonsterInfo();
+    void PrintMonsterInfo();
 };
 
 Monster::Monster(const string& name, float hp, float damage)
