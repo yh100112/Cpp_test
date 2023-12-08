@@ -6,14 +6,14 @@
 using namespace std;
 
 void cal(int start, int end, long long* result){
-  long long sum = 0;
+  volatile long long sum = 0;
   for(int i = start; i < end; ++i)
     sum += i;
   *result = sum;
 }
 
 long long single_thread_cal() {
-  long long sum = 0;
+  volatile long long sum = 0;
   for (int i = 1; i < 1000000000; i++)
     sum += i;
   return sum;
