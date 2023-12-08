@@ -4,40 +4,35 @@
 #include<vector>
 using namespace std;
 
-void worker(vector<int>::iterator start, vector<int>::iterator end, int* result){
-  int sum = 0;
+void worker(vector<int64_t>::iterator start, vector<int64_t>::iterator end, int64_t* result){
+  int64_t sum = 0;
   for(auto itr = start; itr < end; ++itr){
     sum += *itr;
   }
   *result = sum;
 
   thread::id this_id = std::this_thread::get_id();
-  printf("쓰레드 %x에서 %d부터 %d까지 계산한 결과 : %d \n", this_id, *start, *(end - 1), sum);
+  printf("쓰레드 %x에서 %lld부터 %lld까지 계산한 결과 : %lld \n", this_id, *start, *(end - 1), sum);
 }
 
 int main(){
-    clock_t start, finish; 
+  int64_t total = 0;
+  vector<int64_t> data(100000000);
+  vector<int64_t> partial_sums(2);
+  vector<thread> threads;
 
-    vector<int> data(10000);
-    for(int i = 0; i < 10000; i++){
-        data[i] = i+1;
-    }
+  for(int i = 0; i < 100000000; i++) data[i] = i+1;
 
-    //각 쓰레드에서 계산된 부분 합들을 저장하는 벡터
-    vector<int> partial_sums(2);
+  auto startTime = chrono::high_resolution_clock::now();
+  for(int i = 0; i < 2; i++) threads.push_back(thread(worker, data.begin() + i * 50000000, data.begin() + (i+1) * 50000000, &partial_sums[i]));
+  for(int i = 0; i < 2; i++) threads[i].join();
+  auto endTime = chrono::high_resolution_clock::now();
 
-    vector<thread> workers;
-    start = clock();
-    for(int i = 0; i < 2; i++)
-        workers.push_back(thread(worker, data.begin() + i * 5000, data.begin() + (i+1) * 5000, &partial_sums[i]));
-    for(int i = 0; i < 2; i++)
-        workers[i].join();
-    finish = clock();
-    cout << finish - start << endl;
+  chrono::duration<double> result = endTime - startTime;
+  cout << "스레드 2개일 때 걸린 시간 : " << result.count() << endl;
 
-    int total = 0;
-    for(int i = 0; i < 2; i++)
-        total += partial_sums[i];
+  for(int i = 0; i < 2; i++)
+    total += partial_sums[i];
 
-    std::cout << "전체 합 : " << total << std::endl;
+  std::cout << "전체 합 : " << total << std::endl;
 }
