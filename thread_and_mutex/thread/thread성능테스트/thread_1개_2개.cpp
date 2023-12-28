@@ -25,13 +25,10 @@ int main(){
   vector<thread> threads;
 
   auto startTime = chrono::high_resolution_clock::now();
-
   for(int i = 0; i < 2; i++)
     threads.push_back(std::thread(cal, i * 500000000, (i + 1) * 500000000, &sums[i]));
-
   for(int i = 0; i < 2; i++)
     threads[i].join();
-  
   auto endTime = chrono::high_resolution_clock::now();
 
   chrono::duration<double> result = endTime - startTime;
