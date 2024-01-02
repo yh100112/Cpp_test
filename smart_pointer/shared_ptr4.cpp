@@ -41,7 +41,8 @@ int main()
   cout << "현재 소유자 수 : " << dragon.use_count() << endl; // 1
 
   auto dragon2 = dragon;
-  cout << "현재 소유자 수 : " << dragon.use_count() << endl; // 2
+  cout << "현재 소유자 수 : " << dragon.use_count() << endl;  // 2
+  cout << "현재 소유자 수 : " << dragon2.use_count() << endl; // 2
 
   dragon2->PrintMonsterInfo();
 
