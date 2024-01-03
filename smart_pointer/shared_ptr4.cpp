@@ -36,17 +36,16 @@ void Monster::PrintMonsterInfo()
 
 int main()
 {
-  shared_ptr<Monster> dragon = make_shared<Monster>("드래곤", 5000.f, 500.f);
+    shared_ptr<Monster> dragon = make_shared<Monster>("드래곤", 5000.f, 500.f);
+    // 이것도 가능 -> shared_ptr<Monster> dragon(new Monster("드래곤", 5000.f, 500.f));
 
-  cout << "현재 소유자 수 : " << dragon.use_count() << endl; // 1
+    cout << "현재 소유자 수 : " << dragon.use_count() << endl; // 1
 
-  auto dragon2 = dragon;
-  cout << "현재 소유자 수 : " << dragon.use_count() << endl;  // 2
-  cout << "현재 소유자 수 : " << dragon2.use_count() << endl; // 2
+    shared_ptr<Monster> dragon2 = dragon;
+    cout << "현재 소유자 수 : " << dragon.use_count() << endl;  // 2
+    cout << "현재 소유자 수 : " << dragon2.use_count() << endl; // 2
 
-  dragon2->PrintMonsterInfo();
+    dragon2.reset(); // dragon2 해제
 
-  dragon2.reset(); // dragon2 해제
-
-  cout << "현재 소유자 수 : " << dragon.use_count() << endl; // 1
+    cout << "현재 소유자 수 : " << dragon.use_count() << endl; // 1
 }

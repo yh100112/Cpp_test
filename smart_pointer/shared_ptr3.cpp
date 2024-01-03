@@ -24,7 +24,8 @@ void Person::ShowPersonInfo(){
 
 int main(){
     Person *a1 = new Person("kim",33);
-    shared_ptr<Person> pp = shared_ptr<Person>(a1); // a1이 동적할당, 즉 포인터가 아니라면 이렇게 넣을 수 없음
+    // Person a1 = new Person("kim",33); // 이걸로는 넣을 수 없음
+    shared_ptr<Person> pp = shared_ptr<Person>(a1); // a1이 즉 포인터가 아니라면 이렇게 넣을 수 없음
     pp->ShowPersonInfo();
 
     shared_ptr<Person> hong = make_shared<Person>("길동",29);
@@ -34,6 +35,5 @@ int main(){
     cout << pp.use_count() << endl;   // 1
 }
 /*
-Person객체를 가리키는 shared_ptr 인스턴스인 hong은 일반 포인터와는 달리 사용이 끝난 후
-delete키워드를 사용하여 메모리를 해제할 필요가 없다.
+Person객체를 가리키는 shared_ptr 인스턴스는 일반 포인터와는 달리 사용이 끝난 후 delete키워드를 사용하여 메모리를 해제할 필요가 없다.
 */
