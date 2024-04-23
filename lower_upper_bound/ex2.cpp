@@ -10,4 +10,7 @@ int main() {
   cout << *lower_bound(v.begin(), v.end(), 3) << endl;  // 8
   cout << *lower_bound(v.begin(), v.end(), 35) << endl;  // 이 경우는 35보다 큰 값이 없으므로 0 반환 
   cout << lower_bound(v.begin(), v.end(), 35) - v.begin() << endl;  // 4  -> 35보다 큰 값이 없으므로 v.end()를 가리킴
+
+  vector<int> v2 {0,0,0,0};
+  cout << lower_bound(v.begin(), v2.end(), 10) - v2.begin() << endl; // 4
 }
