@@ -23,4 +23,7 @@ int main()
   c->func1(); // child
   c->func2(); // child
   c->func3(); // parent
+
+  Parent *p = new Parent;
+  p->func1(); // parent
 }
