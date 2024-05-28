@@ -38,5 +38,8 @@ int main(){
     Student student(1,"김덕용");
     student.show();
     student.showName();
+
+    Person p("긴매매");
+    p.showName(); // 이름 : 긴매매
     return 0;
 }
