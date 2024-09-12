@@ -2,17 +2,17 @@
 using namespace std;
 
 struct Point {
-    int y,x; // 구조체 멤버변수
-    Point(int y, int x) : y(y), x(x) {} // y,x를 받아 멤버변수 생성
-    Point(){y = -1; x = -1;} // y,x가 정해지지 않은 경우 default로 -1, -1 설정
+  int y,x; // 구조체 멤버변수
+  Point(int y, int x) : y(y), x(x) {} // y,x를 받아 멤버변수 생성
+  Point(){y = -1; x = -1;} // y,x가 정해지지 않은 경우 default로 -1, -1 설정
 
-    // 연산자오버로딩 ( 구조체끼리 크고작음을 비교하는 기준을 잡음 )
-    // 1순위 : x , 2순위 y를 기반으로 크고 작음을 판단
-    // -> 정렬하면 x가 1순위, y가 2순위로 오름차순 정렬된다.
-    bool operator < (const Point& a) const {
-        if(x == a.x) return y < a.y;
-        return x < a.x;
-    }
+  // 연산자오버로딩 ( 구조체끼리 크고작음을 비교하는 기준을 잡음 )
+  // 1순위 : x , 2순위 y를 기반으로 크고 작음을 판단
+  // -> 정렬하면 x가 1순위, y가 2순위로 오름차순 정렬된다.
+  bool operator < (const Point& a) const {
+    if(x == a.x) return y < a.y;
+    return x < a.x;
+  }
 };
 
 /*

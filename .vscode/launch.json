@@ -12,6 +12,14 @@
       "externalConsole": false,
       "MIMode": "lldb",
       "preLaunchTask": "C/C++: g++ 활성 파일 빌드"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/deok-yongkim/Cpp_test",
+      "program": "/Users/deok-yongkim/Cpp_test/build/Debug/outDebug"
     }
   ],
   "version": "2.0.0"
