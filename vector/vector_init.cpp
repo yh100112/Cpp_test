@@ -13,8 +13,9 @@ int main()
 
   for(auto& v : a)
     cout << v << endl; // 0 0 0 0 0 1 2 3 4 5  -> 그래서 emplace_back으로 넣으면 0 0 0 0 0 뒤에 들어감
-
   cout << a.size() << endl; // 10
+
+  vector<int> t(3, 5); // 5 5 5
 
   vector<int> b(2);
   b[0] = 3;
