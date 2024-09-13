@@ -13,4 +13,13 @@ int main() {
   // a[0].emplace_back(2); -> error
 
   cout << a[0][0] << endl; // 1
+
+  vector<vector<int>> vec(3, vector<int>(3, 0));
+  vector<vector<int>>::iterator iter;
+  for (iter = vec.begin(); iter!= vec.end(); iter++){
+    fill(iter->begin(), iter->end(), -1);
+  }
+  // -1 -1 -1 
+  // -1 -1 -1 
+  // -1 -1 -1
 }
